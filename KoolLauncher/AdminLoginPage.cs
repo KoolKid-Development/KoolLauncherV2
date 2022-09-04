@@ -53,7 +53,7 @@ namespace KoolLauncherV2
 
         private void label4_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Hide();
         }
 
         private void AdminLoginPage_Load(object sender, EventArgs e)
