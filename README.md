@@ -38,7 +38,7 @@ To run this project, you will need to have some things
 
 `Webhost` https://www.hostinger.com/web-hosting
 
-`PHP` Most time you get it whit your webhost
+`PHP` Most time you get it with your webhost
 
 `PhPMyAdmin` https://phpmyadmin.co or use your webhost version!
 
@@ -97,7 +97,7 @@ ALTER TABLE `adminusers`
  COMMIT;
 ```
 Now if your provider dose not allow you to create databases via phpmyadmin go to your panel and make a databases
-after that go to phpmyadmin whit your database name database username name and database passowrd
+after that go to phpmyadmin with your database name database username name and database passowrd
 and go to `SQL` TAB  and paste this
 ```sql
 CREATE TABLE `users` (
@@ -126,7 +126,7 @@ Now there is another option whitch is by using my file:
 
 https://kool-kid.xyz/download/KoolWeb.sql
 
-And now we are done whit the mysql part
+And now we are done with the mysql part
 ### Setting up project
 Use this tutorial to make the launcher here is the png to ico website that i used in the tutorial:
 https://convertico.com
