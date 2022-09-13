@@ -133,9 +133,19 @@ namespace KoolLauncherV2.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap download {
+        internal static System.Drawing.Bitmap error {
             get {
-                object obj = ResourceManager.GetObject("download", resourceCulture);
+                object obj = ResourceManager.GetObject("error", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap happycloud {
+            get {
+                object obj = ResourceManager.GetObject("happycloud", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -156,6 +166,16 @@ namespace KoolLauncherV2.Properties {
         internal static System.Drawing.Bitmap home_50px {
             get {
                 object obj = ResourceManager.GetObject("home_50px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap info {
+            get {
+                object obj = ResourceManager.GetObject("info", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -223,6 +243,16 @@ namespace KoolLauncherV2.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap sadcloud {
+            get {
+                object obj = ResourceManager.GetObject("sadcloud", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap settings_30px {
             get {
                 object obj = ResourceManager.GetObject("settings_30px", resourceCulture);
@@ -236,6 +266,16 @@ namespace KoolLauncherV2.Properties {
         internal static System.Drawing.Bitmap userdelete {
             get {
                 object obj = ResourceManager.GetObject("userdelete", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap warning {
+            get {
+                object obj = ResourceManager.GetObject("warning", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

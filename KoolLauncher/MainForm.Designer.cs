@@ -56,7 +56,6 @@ namespace KoolLauncherV2
             this.MainPage = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
             this.guna2Button5 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button4 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
             this.username = new System.Windows.Forms.Label();
             this.bunifuPictureBox1 = new Bunifu.UI.WinForms.BunifuPictureBox();
@@ -71,6 +70,7 @@ namespace KoolLauncherV2
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.SettingsPage = new System.Windows.Forms.TabPage();
+            this.guna2Button4 = new Guna.UI2.WinForms.Guna2Button();
             this.copytrade = new System.Windows.Forms.Label();
             this.bunifuSeparator3 = new Bunifu.UI.WinForms.BunifuSeparator();
             this.bunifuSeparator2 = new Bunifu.UI.WinForms.BunifuSeparator();
@@ -81,7 +81,6 @@ namespace KoolLauncherV2
             this.lbJavaPath = new Guna.UI2.WinForms.Guna2TextBox();
             this.RamText = new Bunifu.UI.WinForms.BunifuTextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.bunifuHSlider1 = new Bunifu.UI.WinForms.BunifuHSlider();
             this.cbSkipAssets = new System.Windows.Forms.CheckBox();
             this.rbParallelDownload = new System.Windows.Forms.RadioButton();
             this.rbSequenceDownload = new System.Windows.Forms.RadioButton();
@@ -160,7 +159,6 @@ namespace KoolLauncherV2
             this.header.Quality = 10;
             this.header.Size = new System.Drawing.Size(1092, 39);
             this.header.TabIndex = 28;
-            this.header.Click += new System.EventHandler(this.header_Click);
             // 
             // guna2Button6
             // 
@@ -412,17 +410,15 @@ namespace KoolLauncherV2
             this.MainPage.TabIndex = 0;
             this.MainPage.Text = "MainPage";
             this.MainPage.UseVisualStyleBackColor = true;
-            this.MainPage.Click += new System.EventHandler(this.MainPage_Click);
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
             this.panel2.Controls.Add(this.guna2Button5);
-            this.panel2.Controls.Add(this.guna2Button4);
             this.panel2.Controls.Add(this.guna2Button3);
             this.panel2.Controls.Add(this.username);
             this.panel2.Controls.Add(this.bunifuPictureBox1);
-            this.panel2.Location = new System.Drawing.Point(367, 6);
+            this.panel2.Location = new System.Drawing.Point(352, 29);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(366, 118);
             this.panel2.TabIndex = 44;
@@ -446,26 +442,6 @@ namespace KoolLauncherV2
             this.guna2Button5.TabIndex = 43;
             this.guna2Button5.Text = "Refresh";
             this.guna2Button5.Click += new System.EventHandler(this.guna2Button5_Click);
-            // 
-            // guna2Button4
-            // 
-            this.guna2Button4.BackgroundImage = global::KoolLauncherV2.Properties.Resources.account_30px;
-            this.guna2Button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.guna2Button4.BorderColor = System.Drawing.Color.Transparent;
-            this.guna2Button4.CheckedState.Parent = this.guna2Button4;
-            this.guna2Button4.CustomImages.Parent = this.guna2Button4;
-            this.guna2Button4.FillColor = System.Drawing.Color.Transparent;
-            this.guna2Button4.Font = new System.Drawing.Font("Arial", 9F);
-            this.guna2Button4.ForeColor = System.Drawing.Color.Transparent;
-            this.guna2Button4.HoverState.Parent = this.guna2Button4;
-            this.guna2Button4.Location = new System.Drawing.Point(333, 45);
-            this.guna2Button4.Name = "guna2Button4";
-            this.guna2Button4.PressedColor = System.Drawing.Color.Transparent;
-            this.guna2Button4.ShadowDecoration.Parent = this.guna2Button4;
-            this.guna2Button4.Size = new System.Drawing.Size(29, 27);
-            this.guna2Button4.TabIndex = 37;
-            this.guna2Button4.Text = "Refresh";
-            this.guna2Button4.Click += new System.EventHandler(this.guna2Button4_Click);
             // 
             // guna2Button3
             // 
@@ -495,9 +471,9 @@ namespace KoolLauncherV2
             this.username.ForeColor = System.Drawing.Color.White;
             this.username.Location = new System.Drawing.Point(126, 45);
             this.username.Name = "username";
-            this.username.Size = new System.Drawing.Size(137, 31);
+            this.username.Size = new System.Drawing.Size(138, 31);
             this.username.TabIndex = 42;
-            this.username.Text = "NoxlCraft";
+            this.username.Text = "NoxyKool";
             // 
             // bunifuPictureBox1
             // 
@@ -540,7 +516,6 @@ namespace KoolLauncherV2
             this.portallinks.Name = "portallinks";
             this.portallinks.Size = new System.Drawing.Size(976, 293);
             this.portallinks.TabIndex = 40;
-            this.portallinks.Paint += new System.Windows.Forms.PaintEventHandler(this.portallinks_Paint);
             // 
             // label15
             // 
@@ -637,6 +612,7 @@ namespace KoolLauncherV2
             // SettingsPage
             // 
             this.SettingsPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
+            this.SettingsPage.Controls.Add(this.guna2Button4);
             this.SettingsPage.Controls.Add(this.copytrade);
             this.SettingsPage.Controls.Add(this.bunifuSeparator3);
             this.SettingsPage.Controls.Add(this.bunifuSeparator2);
@@ -647,7 +623,6 @@ namespace KoolLauncherV2
             this.SettingsPage.Controls.Add(this.lbJavaPath);
             this.SettingsPage.Controls.Add(this.RamText);
             this.SettingsPage.Controls.Add(this.label4);
-            this.SettingsPage.Controls.Add(this.bunifuHSlider1);
             this.SettingsPage.Controls.Add(this.cbSkipAssets);
             this.SettingsPage.Controls.Add(this.rbParallelDownload);
             this.SettingsPage.Controls.Add(this.rbSequenceDownload);
@@ -663,13 +638,29 @@ namespace KoolLauncherV2
             this.SettingsPage.Text = "SettingsPage";
             this.SettingsPage.Click += new System.EventHandler(this.SettingsPage_Click);
             // 
+            // guna2Button4
+            // 
+            this.guna2Button4.CheckedState.Parent = this.guna2Button4;
+            this.guna2Button4.CustomImages.Parent = this.guna2Button4;
+            this.guna2Button4.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(200)))), ((int)(((byte)(30)))));
+            this.guna2Button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.guna2Button4.ForeColor = System.Drawing.Color.White;
+            this.guna2Button4.HoverState.Parent = this.guna2Button4;
+            this.guna2Button4.Location = new System.Drawing.Point(512, 396);
+            this.guna2Button4.Name = "guna2Button4";
+            this.guna2Button4.ShadowDecoration.Parent = this.guna2Button4;
+            this.guna2Button4.Size = new System.Drawing.Size(58, 23);
+            this.guna2Button4.TabIndex = 37;
+            this.guna2Button4.Text = "Ok";
+            this.guna2Button4.Click += new System.EventHandler(this.guna2Button4_Click);
+            // 
             // copytrade
             // 
             this.copytrade.AutoSize = true;
             this.copytrade.BackColor = System.Drawing.Color.Transparent;
             this.copytrade.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.copytrade.ForeColor = System.Drawing.Color.White;
-            this.copytrade.Location = new System.Drawing.Point(447, 439);
+            this.copytrade.Location = new System.Drawing.Point(437, 466);
             this.copytrade.Name = "copytrade";
             this.copytrade.Size = new System.Drawing.Size(209, 15);
             this.copytrade.TabIndex = 43;
@@ -684,7 +675,7 @@ namespace KoolLauncherV2
             this.bunifuSeparator3.LineColor = System.Drawing.Color.Silver;
             this.bunifuSeparator3.LineStyle = Bunifu.UI.WinForms.BunifuSeparator.LineStyles.Solid;
             this.bunifuSeparator3.LineThickness = 1;
-            this.bunifuSeparator3.Location = new System.Drawing.Point(359, 398);
+            this.bunifuSeparator3.Location = new System.Drawing.Point(343, 425);
             this.bunifuSeparator3.Name = "bunifuSeparator3";
             this.bunifuSeparator3.Orientation = Bunifu.UI.WinForms.BunifuSeparator.LineOrientation.Horizontal;
             this.bunifuSeparator3.Size = new System.Drawing.Size(397, 16);
@@ -699,7 +690,7 @@ namespace KoolLauncherV2
             this.bunifuSeparator2.LineColor = System.Drawing.Color.Silver;
             this.bunifuSeparator2.LineStyle = Bunifu.UI.WinForms.BunifuSeparator.LineStyles.Solid;
             this.bunifuSeparator2.LineThickness = 1;
-            this.bunifuSeparator2.Location = new System.Drawing.Point(359, 312);
+            this.bunifuSeparator2.Location = new System.Drawing.Point(343, 312);
             this.bunifuSeparator2.Name = "bunifuSeparator2";
             this.bunifuSeparator2.Orientation = Bunifu.UI.WinForms.BunifuSeparator.LineOrientation.Horizontal;
             this.bunifuSeparator2.Size = new System.Drawing.Size(397, 14);
@@ -714,7 +705,7 @@ namespace KoolLauncherV2
             this.bunifuSeparator1.LineColor = System.Drawing.Color.Silver;
             this.bunifuSeparator1.LineStyle = Bunifu.UI.WinForms.BunifuSeparator.LineStyles.Solid;
             this.bunifuSeparator1.LineThickness = 1;
-            this.bunifuSeparator1.Location = new System.Drawing.Point(359, 149);
+            this.bunifuSeparator1.Location = new System.Drawing.Point(343, 149);
             this.bunifuSeparator1.Name = "bunifuSeparator1";
             this.bunifuSeparator1.Orientation = Bunifu.UI.WinForms.BunifuSeparator.LineOrientation.Horizontal;
             this.bunifuSeparator1.Size = new System.Drawing.Size(397, 14);
@@ -724,7 +715,7 @@ namespace KoolLauncherV2
             // 
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold);
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(528, 417);
+            this.label5.Location = new System.Drawing.Point(518, 444);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(47, 22);
             this.label5.TabIndex = 39;
@@ -734,7 +725,7 @@ namespace KoolLauncherV2
             // 
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(472, 329);
+            this.label2.Location = new System.Drawing.Point(467, 329);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(148, 22);
             this.label2.TabIndex = 38;
@@ -744,7 +735,7 @@ namespace KoolLauncherV2
             // 
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(454, 166);
+            this.label1.Location = new System.Drawing.Point(449, 166);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(184, 18);
             this.label1.TabIndex = 37;
@@ -769,7 +760,7 @@ namespace KoolLauncherV2
             this.lbJavaPath.ForeColor = System.Drawing.Color.White;
             this.lbJavaPath.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.lbJavaPath.HoverState.Parent = this.lbJavaPath;
-            this.lbJavaPath.Location = new System.Drawing.Point(359, 103);
+            this.lbJavaPath.Location = new System.Drawing.Point(343, 103);
             this.lbJavaPath.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
             this.lbJavaPath.Name = "lbJavaPath";
             this.lbJavaPath.PasswordChar = '\0';
@@ -809,7 +800,7 @@ namespace KoolLauncherV2
             this.RamText.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.RamText.Lines = new string[] {
         "2GB"};
-            this.RamText.Location = new System.Drawing.Point(706, 361);
+            this.RamText.Location = new System.Drawing.Point(540, 362);
             this.RamText.MaxLength = 6;
             this.RamText.MinimumSize = new System.Drawing.Size(1, 1);
             this.RamText.Modified = false;
@@ -845,7 +836,7 @@ namespace KoolLauncherV2
             this.RamText.SelectionLength = 0;
             this.RamText.SelectionStart = 0;
             this.RamText.ShortcutsEnabled = true;
-            this.RamText.Size = new System.Drawing.Size(53, 31);
+            this.RamText.Size = new System.Drawing.Size(53, 20);
             this.RamText.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
             this.RamText.TabIndex = 35;
             this.RamText.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -860,72 +851,25 @@ namespace KoolLauncherV2
             // 
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(358, 367);
+            this.label4.Location = new System.Drawing.Point(482, 361);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(67, 18);
+            this.label4.Size = new System.Drawing.Size(52, 18);
             this.label4.TabIndex = 34;
-            this.label4.Text = "Ram: ";
-            // 
-            // bunifuHSlider1
-            // 
-            this.bunifuHSlider1.AllowCursorChanges = true;
-            this.bunifuHSlider1.AllowHomeEndKeysDetection = false;
-            this.bunifuHSlider1.AllowIncrementalClickMoves = true;
-            this.bunifuHSlider1.AllowMouseDownEffects = false;
-            this.bunifuHSlider1.AllowMouseHoverEffects = false;
-            this.bunifuHSlider1.AllowScrollingAnimations = true;
-            this.bunifuHSlider1.AllowScrollKeysDetection = true;
-            this.bunifuHSlider1.AllowScrollOptionsMenu = true;
-            this.bunifuHSlider1.AllowShrinkingOnFocusLost = false;
-            this.bunifuHSlider1.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuHSlider1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuHSlider1.BackgroundImage")));
-            this.bunifuHSlider1.BindingContainer = null;
-            this.bunifuHSlider1.BorderRadius = 2;
-            this.bunifuHSlider1.BorderThickness = 1;
-            this.bunifuHSlider1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuHSlider1.DrawThickBorder = false;
-            this.bunifuHSlider1.DurationBeforeShrink = 2000;
-            this.bunifuHSlider1.ElapsedColor = System.Drawing.Color.DodgerBlue;
-            this.bunifuHSlider1.LargeChange = 10;
-            this.bunifuHSlider1.Location = new System.Drawing.Point(444, 361);
-            this.bunifuHSlider1.Maximum = 50;
-            this.bunifuHSlider1.Minimum = 0;
-            this.bunifuHSlider1.MinimumSize = new System.Drawing.Size(0, 31);
-            this.bunifuHSlider1.MinimumThumbLength = 18;
-            this.bunifuHSlider1.Name = "bunifuHSlider1";
-            this.bunifuHSlider1.OnDisable.ScrollBarBorderColor = System.Drawing.Color.Silver;
-            this.bunifuHSlider1.OnDisable.ScrollBarColor = System.Drawing.Color.Transparent;
-            this.bunifuHSlider1.OnDisable.ThumbColor = System.Drawing.Color.Silver;
-            this.bunifuHSlider1.ScrollBarBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
-            this.bunifuHSlider1.ScrollBarColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
-            this.bunifuHSlider1.ShrinkSizeLimit = 3;
-            this.bunifuHSlider1.Size = new System.Drawing.Size(240, 31);
-            this.bunifuHSlider1.SliderColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
-            this.bunifuHSlider1.SliderStyle = Bunifu.UI.WinForms.BunifuHSlider.SliderStyles.Thin;
-            this.bunifuHSlider1.SliderThumbStyle = Utilities.BunifuSlider.BunifuHScrollBar.SliderThumbStyles.Circular;
-            this.bunifuHSlider1.SmallChange = 1;
-            this.bunifuHSlider1.TabIndex = 33;
-            this.bunifuHSlider1.ThumbColor = System.Drawing.Color.DodgerBlue;
-            this.bunifuHSlider1.ThumbFillColor = System.Drawing.SystemColors.Control;
-            this.bunifuHSlider1.ThumbLength = 47;
-            this.bunifuHSlider1.ThumbMargin = 1;
-            this.bunifuHSlider1.ThumbSize = Bunifu.UI.WinForms.BunifuHSlider.ThumbSizes.Medium;
-            this.bunifuHSlider1.ThumbStyle = Bunifu.UI.WinForms.BunifuHSlider.ThumbStyles.Outline;
-            this.bunifuHSlider1.Value = 15;
-            this.bunifuHSlider1.ValueChanged += new System.EventHandler<Utilities.BunifuSlider.BunifuHScrollBar.ValueChangedEventArgs>(this.bunifuHSlider1_ValueChanged);
+            this.label4.Text = "Ram:";
             // 
             // cbSkipAssets
             // 
             this.cbSkipAssets.AutoSize = true;
             this.cbSkipAssets.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.cbSkipAssets.ForeColor = System.Drawing.Color.White;
-            this.cbSkipAssets.Location = new System.Drawing.Point(359, 224);
+            this.cbSkipAssets.Location = new System.Drawing.Point(440, 224);
             this.cbSkipAssets.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.cbSkipAssets.Name = "cbSkipAssets";
             this.cbSkipAssets.Size = new System.Drawing.Size(202, 24);
             this.cbSkipAssets.TabIndex = 29;
             this.cbSkipAssets.Text = "Skip assets download";
             this.cbSkipAssets.UseVisualStyleBackColor = true;
+            this.cbSkipAssets.CheckedChanged += new System.EventHandler(this.cbSkipAssets_CheckedChanged);
             // 
             // rbParallelDownload
             // 
@@ -933,7 +877,7 @@ namespace KoolLauncherV2
             this.rbParallelDownload.Checked = true;
             this.rbParallelDownload.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.rbParallelDownload.ForeColor = System.Drawing.Color.White;
-            this.rbParallelDownload.Location = new System.Drawing.Point(359, 284);
+            this.rbParallelDownload.Location = new System.Drawing.Point(427, 284);
             this.rbParallelDownload.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.rbParallelDownload.Name = "rbParallelDownload";
             this.rbParallelDownload.Size = new System.Drawing.Size(229, 24);
@@ -947,7 +891,7 @@ namespace KoolLauncherV2
             this.rbSequenceDownload.AutoSize = true;
             this.rbSequenceDownload.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.rbSequenceDownload.ForeColor = System.Drawing.Color.White;
-            this.rbSequenceDownload.Location = new System.Drawing.Point(359, 254);
+            this.rbSequenceDownload.Location = new System.Drawing.Point(440, 254);
             this.rbSequenceDownload.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.rbSequenceDownload.Name = "rbSequenceDownload";
             this.rbSequenceDownload.Size = new System.Drawing.Size(203, 24);
@@ -959,7 +903,7 @@ namespace KoolLauncherV2
             // 
             this.txtjavapath.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.txtjavapath.ForeColor = System.Drawing.Color.White;
-            this.txtjavapath.Location = new System.Drawing.Point(498, 81);
+            this.txtjavapath.Location = new System.Drawing.Point(493, 81);
             this.txtjavapath.Name = "txtjavapath";
             this.txtjavapath.Size = new System.Drawing.Size(97, 18);
             this.txtjavapath.TabIndex = 23;
@@ -970,19 +914,20 @@ namespace KoolLauncherV2
             this.cbSkipHashCheck.AutoSize = true;
             this.cbSkipHashCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.cbSkipHashCheck.ForeColor = System.Drawing.Color.White;
-            this.cbSkipHashCheck.Location = new System.Drawing.Point(359, 194);
+            this.cbSkipHashCheck.Location = new System.Drawing.Point(450, 194);
             this.cbSkipHashCheck.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.cbSkipHashCheck.Name = "cbSkipHashCheck";
             this.cbSkipHashCheck.Size = new System.Drawing.Size(183, 24);
             this.cbSkipHashCheck.TabIndex = 30;
             this.cbSkipHashCheck.Text = "Skip hash checking";
             this.cbSkipHashCheck.UseVisualStyleBackColor = true;
+            this.cbSkipHashCheck.CheckedChanged += new System.EventHandler(this.cbSkipHashCheck_CheckedChanged);
             // 
             // txtgamepath
             // 
             this.txtgamepath.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.txtgamepath.ForeColor = System.Drawing.Color.White;
-            this.txtgamepath.Location = new System.Drawing.Point(494, 16);
+            this.txtgamepath.Location = new System.Drawing.Point(489, 16);
             this.txtgamepath.Name = "txtgamepath";
             this.txtgamepath.Size = new System.Drawing.Size(104, 18);
             this.txtgamepath.TabIndex = 22;
@@ -1007,7 +952,7 @@ namespace KoolLauncherV2
             this.txtPath.ForeColor = System.Drawing.Color.White;
             this.txtPath.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtPath.HoverState.Parent = this.txtPath;
-            this.txtPath.Location = new System.Drawing.Point(359, 38);
+            this.txtPath.Location = new System.Drawing.Point(343, 38);
             this.txtPath.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
             this.txtPath.Name = "txtPath";
             this.txtPath.PasswordChar = '\0';
@@ -1128,7 +1073,7 @@ namespace KoolLauncherV2
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "MultyPlay";
+            this.Text = "Launcher";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.Shown += new System.EventHandler(this.MainForm_Shown);
             this.header.ResumeLayout(false);
@@ -1182,7 +1127,6 @@ namespace KoolLauncherV2
         private System.Windows.Forms.RadioButton rbParallelDownload;
         private Guna.UI2.WinForms.Guna2Button homebtn;
         private System.Windows.Forms.Label label4;
-        private Bunifu.UI.WinForms.BunifuHSlider bunifuHSlider1;
         private System.Windows.Forms.TabPage Wingets;
         private Guna.UI2.WinForms.Guna2TextBox txtXms;
         private Guna.UI2.WinForms.Guna2TextBox TxtXmx;
@@ -1211,8 +1155,8 @@ namespace KoolLauncherV2
         private System.Windows.Forms.Label username;
         private Bunifu.UI.WinForms.BunifuPictureBox bunifuPictureBox1;
         private Guna.UI2.WinForms.Guna2Button guna2Button5;
-        private Guna.UI2.WinForms.Guna2Button guna2Button4;
         private System.Windows.Forms.Label label13;
         private Guna.UI2.WinForms.Guna2Button guna2Button6;
+        private Guna.UI2.WinForms.Guna2Button guna2Button4;
     }
 }

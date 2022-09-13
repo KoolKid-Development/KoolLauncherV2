@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Obfuscar.2.2.33\build\obfuscar.props" Condition="Exists('..\packages\Obfuscar.2.2.33\build\obfuscar.props')" />
   <Import Project="..\packages\Costura.Fody.5.7.0\build\Costura.Fody.props" Condition="Exists('..\packages\Costura.Fody.5.7.0\build\Costura.Fody.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -15,10 +16,11 @@
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
     <PublishUrl>publish\</PublishUrl>
-    <Install>false</Install>
-    <InstallFrom>Web</InstallFrom>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateMode>Foreground</UpdateMode>
     <UpdateInterval>7</UpdateInterval>
@@ -26,7 +28,6 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <InstallUrl>https://kool-kid.xyz/</InstallUrl>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <ApplicationRevision>2</ApplicationRevision>
@@ -55,7 +56,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>943d03b775fbf79fcdbf65928a54b933.ico</ApplicationIcon>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>53DAB0AC05C75C99687262D3DAEF4FBF54FB4215</ManifestCertificateThumbprint>
@@ -71,7 +72,7 @@
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject />
@@ -80,8 +81,8 @@
     <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
-      <HintPath>..\packages\BouncyCastle.1.8.9\lib\BouncyCastle.Crypto.dll</HintPath>
+    <Reference Include="BouncyCastle.Crypto, Version=1.9.0.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
+      <HintPath>..\packages\Portable.BouncyCastle.1.9.0\lib\net40\BouncyCastle.Crypto.dll</HintPath>
     </Reference>
     <Reference Include="Bunifu.Licensing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=f89b4760ba7dcb6b, processorArchitecture=MSIL">
       <HintPath>..\packages\Bunifu.UI.WinForms.5.3.0\lib\net40\Bunifu.Licensing.dll</HintPath>
@@ -188,8 +189,11 @@
     <Reference Include="CmlLib, Version=3.3.5.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\CmlLib.Core.3.3.5\lib\net462\CmlLib.dll</HintPath>
     </Reference>
-    <Reference Include="CmlLib.Core.Auth.Microsoft, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CmlLib.Core.Auth.Microsoft.2.0.1\lib\netstandard2.0\CmlLib.Core.Auth.Microsoft.dll</HintPath>
+    <Reference Include="CmlLib.Core.Auth.Microsoft, Version=2.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CmlLib.Core.Auth.Microsoft.2.2.0\lib\netstandard2.0\CmlLib.Core.Auth.Microsoft.dll</HintPath>
+    </Reference>
+    <Reference Include="ConfigParser, Version=0.3.8.2, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Salaros.ConfigParser.0.3.8\lib\net45\ConfigParser.dll</HintPath>
     </Reference>
     <Reference Include="Costura, Version=5.7.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Costura.Fody.5.7.0\lib\netstandard1.0\Costura.dll</HintPath>
@@ -197,8 +201,8 @@
     <Reference Include="FastColoredTextBox, Version=2.16.24.0, Culture=neutral, PublicKeyToken=fb8aa12b994ef61b, processorArchitecture=MSIL">
       <HintPath>..\packages\FCTB.2.16.24\lib\FastColoredTextBox.dll</HintPath>
     </Reference>
-    <Reference Include="Google.Protobuf, Version=3.21.3.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
-      <HintPath>..\packages\Google.Protobuf.3.21.3\lib\net45\Google.Protobuf.dll</HintPath>
+    <Reference Include="Google.Protobuf, Version=3.21.5.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Protobuf.3.21.5\lib\net45\Google.Protobuf.dll</HintPath>
     </Reference>
     <Reference Include="Guna.UI2, Version=2.0.0.1, Culture=neutral, PublicKeyToken=ad275b4be6718d4b, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -225,8 +229,8 @@
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
-    <Reference Include="MySql.Data, Version=8.0.29.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <HintPath>..\packages\MySql.Data.8.0.29\lib\net48\MySql.Data.dll</HintPath>
+    <Reference Include="MySql.Data, Version=8.0.30.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.8.0.30\lib\net48\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -375,8 +379,8 @@
     <Reference Include="System.Text.Encodings.Web, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Text.Encodings.Web.6.0.0\lib\net461\System.Text.Encodings.Web.dll</HintPath>
     </Reference>
-    <Reference Include="System.Text.Json, Version=6.0.0.5, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Text.Json.6.0.5\lib\net461\System.Text.Json.dll</HintPath>
+    <Reference Include="System.Text.Json, Version=6.0.0.6, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.6.0.6\lib\net461\System.Text.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Text.RegularExpressions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Text.RegularExpressions.4.3.1\lib\net463\System.Text.RegularExpressions.dll</HintPath>
@@ -404,57 +408,27 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Ubiety.Dns.Core, Version=2.2.1.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <HintPath>..\packages\MySql.Data.8.0.29\lib\net48\Ubiety.Dns.Core.dll</HintPath>
+      <HintPath>..\packages\MySql.Data.8.0.30\lib\net48\Ubiety.Dns.Core.dll</HintPath>
     </Reference>
-    <Reference Include="XboxAuthNet, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\XboxAuthNet.2.0.0\lib\netstandard2.0\XboxAuthNet.dll</HintPath>
+    <Reference Include="XboxAuthNet, Version=2.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\XboxAuthNet.2.2.0\lib\netstandard2.0\XboxAuthNet.dll</HintPath>
     </Reference>
     <Reference Include="ZstdNet, Version=1.4.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <HintPath>..\packages\MySql.Data.8.0.29\lib\net48\ZstdNet.dll</HintPath>
+      <HintPath>..\packages\MySql.Data.8.0.30\lib\net48\ZstdNet.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdminLoginPage.cs">
+    <Compile Include="FrmAlert.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdminLoginPage.Designer.cs">
-      <DependentUpon>AdminLoginPage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="AdminPage.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AdminPage.Designer.cs">
-      <DependentUpon>AdminPage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="AdminShowAdminUsers.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AdminShowAdminUsers.Designer.cs">
-      <DependentUpon>AdminShowAdminUsers.cs</DependentUpon>
-    </Compile>
-    <Compile Include="AdminShowUsers.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AdminShowUsers.Designer.cs">
-      <DependentUpon>AdminShowUsers.cs</DependentUpon>
+    <Compile Include="FrmAlert.Designer.cs">
+      <DependentUpon>FrmAlert.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmLogin.Designer.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Load1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Load1.Designer.cs">
-      <DependentUpon>Load1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Load2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Load2.Designer.cs">
-      <DependentUpon>Load2.cs</DependentUpon>
     </Compile>
     <Compile Include="FormLoading.cs">
       <SubType>Form</SubType>
@@ -468,43 +442,20 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="LauncherSettings.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="LauncherSettings.Designer.cs">
-      <DependentUpon>LauncherSettings.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AdminLoginPage.resx">
-      <DependentUpon>AdminLoginPage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AdminPage.resx">
-      <DependentUpon>AdminPage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AdminShowAdminUsers.resx">
-      <DependentUpon>AdminShowAdminUsers.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AdminShowUsers.resx">
-      <DependentUpon>AdminShowUsers.cs</DependentUpon>
+    <Compile Include="settings.cs" />
+    <EmbeddedResource Include="FrmAlert.resx">
+      <DependentUpon>FrmAlert.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Load1.resx">
-      <DependentUpon>Load1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Load2.resx">
-      <DependentUpon>Load2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormLoading.resx">
       <DependentUpon>FormLoading.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="LauncherSettings.resx">
-      <DependentUpon>LauncherSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -517,7 +468,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="KoolLauncher_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
@@ -531,15 +481,18 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.Config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="943d03b775fbf79fcdbf65928a54b933.ico" />
-    <Content Include="download.ico" />
     <Content Include="Guna.UI2.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="logo.ico" />
+    <None Include="Resources\warning.png" />
+    <None Include="Resources\sadcloud.png" />
+    <None Include="Resources\info.png" />
+    <None Include="Resources\happycloud.png" />
+    <None Include="Resources\error.png" />
     <None Include="Resources\Logout_26px.png" />
     <None Include="Resources\home_24px.png" />
     <None Include="Resources\Password Key_24px.png" />
@@ -580,10 +533,11 @@
     <Error Condition="!Exists('..\packages\Costura.Fody.5.7.0\build\Costura.Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Costura.Fody.5.7.0\build\Costura.Fody.targets'))" />
     <Error Condition="!Exists('..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets'))" />
     <Error Condition="!Exists('..\packages\Fody.6.6.3\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.6.6.3\build\Fody.targets'))" />
-    <Error Condition="!Exists('..\packages\System.Text.Json.6.0.5\build\System.Text.Json.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Text.Json.6.0.5\build\System.Text.Json.targets'))" />
+    <Error Condition="!Exists('..\packages\Obfuscar.2.2.33\build\obfuscar.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Obfuscar.2.2.33\build\obfuscar.props'))" />
+    <Error Condition="!Exists('..\packages\System.Text.Json.6.0.6\build\System.Text.Json.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Text.Json.6.0.6\build\System.Text.Json.targets'))" />
   </Target>
   <Import Project="..\packages\Costura.Fody.5.7.0\build\Costura.Fody.targets" Condition="Exists('..\packages\Costura.Fody.5.7.0\build\Costura.Fody.targets')" />
   <Import Project="..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets')" />
   <Import Project="..\packages\Fody.6.6.3\build\Fody.targets" Condition="Exists('..\packages\Fody.6.6.3\build\Fody.targets')" />
-  <Import Project="..\packages\System.Text.Json.6.0.5\build\System.Text.Json.targets" Condition="Exists('..\packages\System.Text.Json.6.0.5\build\System.Text.Json.targets')" />
+  <Import Project="..\packages\System.Text.Json.6.0.6\build\System.Text.Json.targets" Condition="Exists('..\packages\System.Text.Json.6.0.6\build\System.Text.Json.targets')" />
 </Project>

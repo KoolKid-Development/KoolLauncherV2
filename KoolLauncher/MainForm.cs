@@ -1,17 +1,14 @@
 ﻿using CmlLib.Core;
 using CmlLib.Core.Auth;
-using CmlLib.Core.Installer;
-using CmlLib.Core.Files;
 using CmlLib.Core.Downloader;
+using Salaros.Configuration;
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.IO;
+using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Drawing;
-using KoolLauncherV2;
 
 namespace KoolLauncherV2
 {
@@ -30,13 +27,56 @@ namespace KoolLauncherV2
         string javaPath = "java.exe";
         FrmLogin usernamechange = new FrmLogin();
         private int uiThreadId = Thread.CurrentThread.ManagedThreadId;
+        private string appConfig = Application.StartupPath + @"\settings.ini";
+        void LoadSettings()
+        {
+            var cfg = new ConfigParser(appConfig);
+            var cfgrambinary = cfg.GetValue("CONFIG", "rambinary");
+            var cfgramnonbinary = cfg.GetValue("CONFIG", "ramnonbinary");
+            var cfgskiphas = cfg.GetValue("CONFIG", "skiphash");
+            var cfgskipassets = cfg.GetValue("CONFIG", "skiphash");
 
+            RamText.Text = cfgramnonbinary;
+            TxtXmx.Text = cfgrambinary;
+            if (cfgskiphas == "true")
+            {
+                cbSkipHashCheck.Checked = true;
+            }
+            else if (cfgskiphas == "false")
+            {
+                cbSkipHashCheck.Checked = false;
+            }
+            else
+            {
+                Alert("Some of the config got corupted!", FrmAlert.enmType.Warning);
+            }
+            
+            
+            if (cfgskipassets == "true")
+            {
+                cbSkipAssets.Checked = true;
+            }
+            else if (cfgskipassets == "false")
+            {
+                cbSkipAssets.Checked = false;
+            }
+            else
+            {
+                Alert("Some of the config got corupted!", FrmAlert.enmType.Warning);
+            }
+
+        }
         private async void MainForm_Shown(object sender, EventArgs e)
         {
             this.Refresh();
 
             var defaultPath = new MinecraftPath(MinecraftPath.GetOSDefaultPath());
             await initializeLauncher(defaultPath);
+        }
+        public void Alert(string msg, FrmAlert.enmType type)
+        {
+            FrmAlert frm = new FrmAlert();
+            frm.showAlert(msg, type);
         }
 
         private async Task initializeLauncher(MinecraftPath path)
@@ -84,7 +124,7 @@ namespace KoolLauncherV2
         }
 
         private void StartProcess(Process process)
-        {            
+        {
             process.StartInfo.UseShellExecute = false;
             process.StartInfo.RedirectStandardError = true;
             process.StartInfo.RedirectStandardOutput = true;
@@ -133,18 +173,19 @@ namespace KoolLauncherV2
         {
             if (session == null)
             {
-                MessageBox.Show("Oops, we could not verify your session.");
+                Alert("Oops, we could not verify your session", FrmAlert.enmType.Error);
                 Console.WriteLine("Oops, we could not verify your session");
                 return;
             }
 
             if (cbVersion.Text == "")
             {
-                MessageBox.Show("You need to select a version first.");
+
+                Alert("You need to select a version first", FrmAlert.enmType.Warning);
                 Console.WriteLine("You need to select a version first.");
                 return;
             }
-            
+
             setUIEnabled(false);
             Console.WriteLine("The ui is now disabled");
             try
@@ -154,12 +195,12 @@ namespace KoolLauncherV2
 
                     MaximumRamMb = int.Parse(TxtXmx.Text),
                     Session = this.session,
-                    ServerIp = LauncherSettings.mcserverip,
+                    ServerIp = settings.serverip,
                 };
                 Console.WriteLine("Setting the ram to: " + TxtXmx.Text);
                 Console.WriteLine("Setting your session to: " + this.session);
-                Console.WriteLine("Setting you autojoinserver ip to: " + LauncherSettings.mcserverip);
-                
+                Console.WriteLine("Setting you autojoinserver ip to: " + settings.serverip);
+
 
                 if (!useMJava)
                     launchOption.JavaPath = javaPath;
@@ -167,10 +208,10 @@ namespace KoolLauncherV2
                 if (!string.IsNullOrEmpty(txtXms.Text))
                     launchOption.MinimumRamMb = int.Parse(txtXms.Text);
 
-                if (!string.IsNullOrEmpty(LauncherSettings.mcserverport))
-                    launchOption.ServerPort = int.Parse(LauncherSettings.mcserverport);
-                Console.WriteLine("Setting the port to" + LauncherSettings.mcserverport);
-                Console.WriteLine("New autojoinserver ip is "+ LauncherSettings.mcserverip + LauncherSettings.mcserverport);
+                if (!string.IsNullOrEmpty(settings.serverport))
+                    launchOption.ServerPort = int.Parse(settings.serverport);
+                Console.WriteLine("Setting the port to" + settings.serverport);
+                Console.WriteLine("New autojoinserver ip is " + settings.serverip + settings.serverport);
 
                 if (rbParallelDownload.Checked)
                 {
@@ -195,7 +236,7 @@ namespace KoolLauncherV2
             catch (FormatException fex)
             {
                 Console.WriteLine("Failed to create MLaunchOption\n\n" + fex);
-                MessageBox.Show("Failed to create MLaunchOption\n\n" + fex);
+                Alert("Faild to start" + fex, FrmAlert.enmType.Error);
             }
             catch (MDownloadFileException mex)
             {
@@ -214,12 +255,12 @@ namespace KoolLauncherV2
             }
             catch (Win32Exception wex)
             {
-                MessageBox.Show(wex + "\n\nOops, we found a problem in your Java.");
+                Alert(wex + "Oops, we found a problem in your Java.\n\n", FrmAlert.enmType.Error);
                 Console.WriteLine("Oops, we found a problem in your Java.");
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                Alert(ex.ToString(), FrmAlert.enmType.Error);
                 Console.WriteLine(ex.ToString());
             }
             finally
@@ -233,22 +274,23 @@ namespace KoolLauncherV2
 
         private void MainForm_Load(object sender, EventArgs e)
         {//loadform
+            LoadSettings();
             Console.WriteLine("Done!");
-            txtpls.Text = LauncherSettings.elinks;
-            if(txtpls.Text == "0")
+            txtpls.Text = settings.launcherlinks;
+            if (txtpls.Text == "0")
             {
                 portallinks.Hide();
                 username.Text = FrmLogin.accountname;
-                label17.Text = LauncherSettings.launchername;
+                label17.Text = settings.ServerName;
                 panel2.Hide();
             }
             else
             {
                 portallinks.Show();
                 username.Text = FrmLogin.accountname + "!";
-                label17.Text = LauncherSettings.launchername;
+                label17.Text = settings.ServerName;
                 panel2.Hide();
-            }  
+            }
         }
 
         private void guna2Button2_Click(object sender, EventArgs e)
@@ -261,28 +303,28 @@ namespace KoolLauncherV2
         }
 
         private void label7_Click(object sender, EventArgs e)
-        {   
-            
+        {
+
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start(LauncherSettings.forumurl);
+            System.Diagnostics.Process.Start(settings.forumlink);
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start(LauncherSettings.storeurl);
+            System.Diagnostics.Process.Start(settings.storelink);
         }
 
         private void pictureBox4_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start(LauncherSettings.voteurl);
+            System.Diagnostics.Process.Start(settings.votelink);
         }
 
         private void pictureBox5_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start(LauncherSettings.discordurl);
+            System.Diagnostics.Process.Start(settings.discordlink);
         }
 
         private void homebtn_Click(object sender, EventArgs e)
@@ -290,71 +332,54 @@ namespace KoolLauncherV2
             pages.SetPage(MainPage);
             settingsbtn1.Show();
             homebtn.Hide();
-            
+
         }
 
         private void bunifuHSlider1_ValueChanged(object sender, Utilities.BunifuSlider.BunifuHScrollBar.ValueChangedEventArgs e)
         {
-            if (bunifuHSlider1.Value == 0)
-            {
-                MessageBox.Show("You need some ram to start minecraft!");
-                bunifuHSlider1.Value = 15;
-                TxtXmx.Text = "2048";
-                RamText.Text = "2GB";
-            }
-            else if (bunifuHSlider1.Value == 15)
-            {
-                TxtXmx.Text = "2048";
-                RamText.Text = "2GB";
-            }
-            else if (bunifuHSlider1.Value == 25)
-            {
-                TxtXmx.Text = "6144";
-                RamText.Text = "6GB";
-            }
-            else if (bunifuHSlider1.Value == 35)
-            {
-                TxtXmx.Text = "8192";
-                RamText.Text = "8GB";
-            }
-            else if (bunifuHSlider1.Value == 45)
-            {
-                TxtXmx.Text = "12288";
-                RamText.Text = "12GB";
-            }
-            else if (bunifuHSlider1.Value == 50)
-            {
-                MessageBox.Show("Mincraft dose not need more then 12gb ram");
-                bunifuHSlider1.Value = 45;
-                RamText.Text = "12GB";
-                TxtXmx.Text = "12288";
-            }
-        }
 
-        private void SettingsPage_Click(object sender, EventArgs e)
-        {
+            var cfg = new ConfigParser(appConfig);
 
-        }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
+            //if (bunifuHSlider1.Value == 0)
+            //{
+            //    Alert("You need to have at least 1GB ram for minecraft", FrmAlert.enmType.Warning);
+            //    bunifuHSlider1.Value = 15;
+            //    TxtXmx.Text = "2048";
+
+            //    RamText.Text = "2GB";
+
+
+            //}
+            //else if (bunifuHSlider1.Value == 15)
+            //{
+            //    TxtXmx.Text = "2048";
+            //    RamText.Text = "2GB";
+            //}
+            //else if (bunifuHSlider1.Value == 25)
+            //{
+            //    TxtXmx.Text = "6144";
+            //    RamText.Text = "6GB";
+            //}
+            //else if (bunifuHSlider1.Value == 35)
+            //{
+            //    TxtXmx.Text = "8192";
+            //    RamText.Text = "8GB";
+            //}
+            //else if (bunifuHSlider1.Value == 45)
+            //{
+            //    TxtXmx.Text = "12288";
+            //    RamText.Text = "12GB";
+            //}
+            //else if (bunifuHSlider1.Value == 50)
+            //{
+            //    Alert("Minecraft dose not need more then 12GB ram", FrmAlert.enmType.Warning);
+            //    bunifuHSlider1.Value = 45;
+            //    RamText.Text = "12GB";
+            //    TxtXmx.Text = "12288";
+            //}
             
-        }
-
-        private void devmode_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void devmode_CheckStateChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void MainPage_Click(object sender, EventArgs e)
-        {
-
-        }
+        }   
 
         private void guna2Button3_Click_1(object sender, EventArgs e)
         {
@@ -362,25 +387,10 @@ namespace KoolLauncherV2
             this.Hide();
         }
 
-        private void portallinks_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void header_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void guna2Button6_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
-        }
-
-        private void guna2Button4_Click(object sender, EventArgs e)
-        {
-            KoolLauncher x = new KoolLauncher();
-            x.Show();
         }
 
         private void guna2Button5_Click(object sender, EventArgs e)
@@ -391,6 +401,123 @@ namespace KoolLauncherV2
         private void guna2Button2_Click_1(object sender, EventArgs e)
         {
             panel2.Show();
+        }
+
+        private void guna2Button4_Click(object sender, EventArgs e)
+        {
+            var cfg = new ConfigParser(appConfig);
+            if (RamText.Text == "")
+            {
+                Alert("You need 1GB ram to launch minecraft", FrmAlert.enmType.Warning);
+                RamText.Text = "1GB";
+                TxtXmx.Text = "1024";
+            }
+            if (RamText.Text == "1GB")
+            {
+                RamText.Text = "1GB";
+                TxtXmx.Text = "1024";
+            }
+            if (RamText.Text == "2GB")
+            {
+                RamText.Text = "2GB";
+                TxtXmx.Text = "2048";
+            }
+            if (RamText.Text == "3GB")
+            {
+                TxtXmx.Text = "3072";
+                RamText.Text = "3GB";
+            }
+            if (RamText.Text == "4GB")
+            {
+                TxtXmx.Text = "4096";
+                RamText.Text = "4GB";
+            }
+            if (RamText.Text == "5GB")
+            {
+                TxtXmx.Text = "5120";
+                RamText.Text = "5GB";
+            }
+            if (RamText.Text == "6GB")
+            {
+                RamText.Text = "6GB";
+                TxtXmx.Text = "6144";
+            }
+            if (RamText.Text == "7GB")
+            {
+                RamText.Text = "7GB";
+                TxtXmx.Text = "7168";
+            }
+            if (RamText.Text == "8GB")
+            {
+                RamText.Text = "8GB";
+                TxtXmx.Text = "8192";
+            }
+            if (RamText.Text == "9GB")
+            {
+                RamText.Text = "9GB";
+                TxtXmx.Text = "9216";
+            }
+            if (RamText.Text == "10GB")
+            {
+                RamText.Text = "10GB";
+                TxtXmx.Text = "10240";
+            }
+            if (RamText.Text == "11GB")
+            {
+                RamText.Text = "11GB";
+                TxtXmx.Text = "11264";
+            }
+            if (RamText.Text == "12GB")
+            {
+                RamText.Text = "12GB";
+                TxtXmx.Text = "12288";
+            }
+            else
+            {
+                Alert("This is invalid use from 1GB to 12GB and add GB to end", FrmAlert.enmType.Warning);
+            }
+            cfg.SetValue("CONFIG", "rambinary", TxtXmx.Text);
+            cfg.SetValue("CONFIG", "ramnonbinary", RamText.Text);
+            cfg.Save();
+        }
+
+        private void cbSkipHashCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbSkipHashCheck.Checked == true)
+            {
+                var cfg = new ConfigParser(appConfig);
+                cfg.SetValue("CONFIG", "skiphash", "true");
+                cfg.Save();
+
+            }
+            else if (cbSkipHashCheck.Checked == false)
+            {
+                var cfg = new ConfigParser(appConfig);
+                cfg.SetValue("CONFIG", "skiphash", "false");
+                cfg.Save();
+            }
+            
+        }
+
+        private void cbSkipAssets_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbSkipAssets.Checked == true)
+            {
+                var cfg = new ConfigParser(appConfig);
+                cfg.SetValue("CONFIG", "skipassets", "true");
+                cfg.Save();
+            }
+            else if (cbSkipAssets.Checked == false)
+            {
+                var cfg = new ConfigParser(appConfig);
+                cfg.SetValue("CONFIG", "skipassets", "false");
+                cfg.Save();
+            }
+        }
+
+        private void SettingsPage_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

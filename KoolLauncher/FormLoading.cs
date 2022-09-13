@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace KoolLauncherV2
 {
-    public partial class FormLoading : Form
+    public partial class FrmLoading : Form
     {
-        public FormLoading()
+        public FrmLoading()
         {
             InitializeComponent();
         }
@@ -26,10 +26,7 @@ namespace KoolLauncherV2
         {
             panel2.Width += 3;
             if (panel2.Width >= 100)
-            {
-                LauncherSettings x = new LauncherSettings();
-                x.Show();
-                x.Hide();
+            { 
                 timer1.Stop();
                 Console.WriteLine("Starting login form..");
                 FrmLogin login = new FrmLogin();
