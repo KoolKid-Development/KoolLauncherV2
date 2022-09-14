@@ -1,25 +1,16 @@
 ﻿using CmlLib.Core.Auth;
 using MySql.Data.MySqlClient;
-using System;
-using System.Windows.Forms;
-using System.Runtime.InteropServices;
-using System.Collections.Generic;
-using System.Configuration;
 using Salaros.Configuration;
+using System;
+using System.Configuration;
+using System.Windows.Forms;
 
 
 namespace KoolLauncherV2
 {
     public partial class FrmLogin : Form
     {
-        
-        //[DllImport("KoolLauncherMySQL.dll")]
-
-        
-        //public static extern void DisplayHelloFromDLL();
-
-
-
+        MySqlConnection db = new MySqlConnection(ConfigurationManager.ConnectionStrings["Default Connection"].ToString());
         MySqlCommand cmd;
         MySqlDataReader dr;
         public FrmLogin()
@@ -74,7 +65,7 @@ namespace KoolLauncherV2
                 Alert("Ouch the launcher config is broken!", FrmAlert.enmType.Error);
             }
 
-            
+
             label6.Text = settings.ServerName;
             Console.WriteLine("Done");
             if (txtmode.Text == "1")
@@ -89,15 +80,11 @@ namespace KoolLauncherV2
             {
                 Alert("Ouch the launcher config is broken!", FrmAlert.enmType.Error);
             }
-            //DisplayHelloFromDLL();
-            //string test4;
-            //test4 = Console.ReadLine();
-            //MessageBox.Show(test4);
         }
 
         private void bunifuShadowPanel1_ControlAdded(object sender, ControlEventArgs e)
         {
-            
+
         }
 
         private void label4_Click_1(object sender, EventArgs e)
@@ -108,7 +95,7 @@ namespace KoolLauncherV2
 
         private void label5_Click_1(object sender, EventArgs e)
         {
-            
+
             this.WindowState = FormWindowState.Minimized;
         }
 
@@ -119,8 +106,7 @@ namespace KoolLauncherV2
 
         private void btnlogin_Click_1(object sender, EventArgs e)
         {
-            
-            MySqlConnection db = new MySqlConnection(ConfigurationManager.ConnectionStrings["Default Connection"].ToString());
+
             Console.WriteLine("Checking if the username textbox is clear");
             if (txtusername.Text == "")
             {
@@ -160,7 +146,7 @@ namespace KoolLauncherV2
                         Alert("This account dose not exists!", FrmAlert.enmType.Error);
                     }
                     db.Close();
-                    
+
                 }
             }
         }
@@ -176,7 +162,7 @@ namespace KoolLauncherV2
             }
             else if (guna2CheckBox1.Checked == false)
             {
-               
+
             }
             UpdateSession(MSession.GetOfflineSession(txtofflineusername.Text));
 

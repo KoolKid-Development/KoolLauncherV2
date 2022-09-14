@@ -5,7 +5,6 @@ using Salaros.Configuration;
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -46,12 +45,8 @@ namespace KoolLauncherV2
             {
                 cbSkipHashCheck.Checked = false;
             }
-            else
-            {
-                Alert("Some of the config got corupted!", FrmAlert.enmType.Warning);
-            }
-            
-            
+
+
             if (cfgskipassets == "true")
             {
                 cbSkipAssets.Checked = true;
@@ -59,10 +54,6 @@ namespace KoolLauncherV2
             else if (cfgskipassets == "false")
             {
                 cbSkipAssets.Checked = false;
-            }
-            else
-            {
-                Alert("Some of the config got corupted!", FrmAlert.enmType.Warning);
             }
 
         }
@@ -378,8 +369,8 @@ namespace KoolLauncherV2
             //    RamText.Text = "12GB";
             //    TxtXmx.Text = "12288";
             //}
-            
-        }   
+
+        }
 
         private void guna2Button3_Click_1(object sender, EventArgs e)
         {
@@ -496,7 +487,7 @@ namespace KoolLauncherV2
                 cfg.SetValue("CONFIG", "skiphash", "false");
                 cfg.Save();
             }
-            
+
         }
 
         private void cbSkipAssets_CheckedChanged(object sender, EventArgs e)
@@ -517,7 +508,12 @@ namespace KoolLauncherV2
 
         private void SettingsPage_Click(object sender, EventArgs e)
         {
-            
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

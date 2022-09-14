@@ -124,6 +124,23 @@
     <value>104, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="bunifuTextBox1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAAoAAAAnCAYAAAA2ANlVAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABCSURBVDhP7crBCQAgDEPRbtL9Z+oYHUBFgohE0HMT+Kc8
+        +5q7x6hdCrAJGViBCfLABHlggjwwQR5YYZjnuZVgLzPruFqSEFMQBrYAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="txtlaunchername.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAANkAAAAmCAYAAABJej66AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADXSURBVHhe7dOxDcIAEARBd+L+a6IMCgBkbYTI4IjmpIn+
+        0z3M7A87z/P28gB+6lZiV2SfHoAvlZjIYKXERAYrJSYyWCkxkcFKiYkMVkpMZLBSYiKDlRITGayUmMhg
+        pcREBislJjJYKTGRwUqJiQxWSkxksFJiIoOVEhMZrJSYyGClxEQGKyUmMlgpMZHBSomJDFZKTGSwUmIi
+        g5USExmslJjIYKXERAYrJSYyWCkxkcFKiYkMVkpMZLBSYiKDlRITGayUmMhgpcSuyO7vR+Br9xIzs92O
+        4wmEnhuYT+6TiwAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAABGdBTUEAALGPC/xhBQAAAYNQTFRFKjZO
