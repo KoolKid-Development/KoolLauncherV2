@@ -67,67 +67,45 @@ or download it from this link: https://kool-kid.xyz/download/koollauncher.zip
 First you have to login phpmyadmin then go to `SQL TAB` and paste this code
 To execute this command press `CTRL + ENTER` on your keyboard
 ```sql
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
-SET time_zone = "+00:00";
-CREATE DATABASE IF NOT EXISTS KoolWeb;
-USE KoolWeb;
+CREATE TABLE `status` (
+  `ID` int(11) NOT NULL,
+  `stats` text NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+INSERT INTO `status` (`ID`, `stats`) VALUES
+(1, 'online');
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `username` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `password` varchar(100) NOT NULL
+  `password` varchar(100) NOT NULL,
+  `banned` text NOT NULL,
+  `admin` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `users` (`id`, `username`, `email`, `password`, `banned`, `admin`) VALUES
+(1, 'KoolKidDev', 'admin@koolkid.xyz', '1234', 'false', 'true');
+CREATE TABLE `version` (
+  `ID` int(11) NOT NULL,
+  `Version` text NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+INSERT INTO `version` (`ID`, `Version`) VALUES
+(1, '2.2.0.2');
+ALTER TABLE `status`
+  ADD PRIMARY KEY (`ID`);
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
+ALTER TABLE `version`
+  ADD PRIMARY KEY (`ID`);
+ALTER TABLE `status`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-USE KoolWeb;
-CREATE TABLE `adminusers` (
-  `id` int(11) NOT NULL,
-  `username` varchar(100) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `password` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-ALTER TABLE `adminusers`
-  ADD PRIMARY KEY (`id`);
-ALTER TABLE `adminusers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
- COMMIT;
-```
-Now if your provider dose not allow you to create databases via phpmyadmin go to your panel and make a databases
-after that go to phpmyadmin with your database name database username name and database passowrd
-and go to `SQL` TAB  and paste this
-```sql
-CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
-  `username` varchar(100) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `password` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
-ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-CREATE TABLE `adminusers` (
-  `id` int(11) NOT NULL,
-  `username` varchar(100) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `password` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-ALTER TABLE `adminusers`
-  ADD PRIMARY KEY (`id`);
-ALTER TABLE `adminusers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `version`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 ```
-Now there is another option whitch is by using my file: 
-
-https://kool-kid.xyz/download/KoolWeb.sql
-
-And now we are done with the mysql part
 ### Setting up project
+ATTENTION THE VIDEO IS USING THE OLD VERSION I WILL MAKE A NEW VIDEO!
 Use this tutorial to make the launcher here is the png to ico website that i used in the tutorial:
 https://convertico.com
 [![Video is not ready](https://img.youtube.com/vi/KlG9Oo4cNFI/0.jpg)](https://www.youtube.com/watch?v=KlG9Oo4cNFI)
