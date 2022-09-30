@@ -44,24 +44,6 @@ namespace KoolLauncherV2
             MySqlCommand command = db.CreateCommand();
             MySqlDataReader myReader;
 
-            command.CommandText = "SELECT Version FROM `version`";
-            try
-            {
-                db.Open();
-                myReader = command.ExecuteReader();
-
-                while (myReader.Read())
-                {
-                    txtversion.Text = myReader[0].ToString();
-
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            db.Close();
-
             //Checks if the launcher version is the same as the database version!
             if (txtversion.Text == label1.Text)
             {
